@@ -1,3 +1,4 @@
+
 # steps/train.py
 
 import pandas as pd
@@ -18,12 +19,22 @@ def train_model(
     preprocessor_path
 ):
     # Load data
-    X_train = pd.read_csv(X_train_path)
+    X_train = pd.read_csv(X_train_path,header=None)
     y_train = pd.read_csv(y_train_path).values.ravel()
-    X_test = pd.read_csv(X_test_path)
+    X_test = pd.read_csv(X_test_path,header=None)
     y_test = pd.read_csv(y_test_path).values.ravel()
 
+    X_train.columns =['LoanID','Age','Income','LoanAmount','CreditScore','MonthsEmployed','NumCreditLines','InterestRate','LoanTerm','DTIRatio','Education',
+    'EmploymentType','MaritalStatus','years_in_job', 'employer_size', 'savings_account',
+    'loan_approved', 'co_applicant', 'previous_default', 'bank_customer','new_customer',
+    'loan_reason', 'property', 'dependents', 'guarantor', 'own_car','HasMortgage','HasDependents','LoanPurpose','HasCoSigner','Default']
 
+    X_test.columns =['LoanID','Age','Income','LoanAmount','CreditScore','MonthsEmployed','NumCreditLines','InterestRate','LoanTerm','DTIRatio','Education',
+'EmploymentType','MaritalStatus','years_in_job', 'employer_size', 'savings_account',
+'loan_approved', 'co_applicant', 'previous_default', 'bank_customer','new_customer',
+'loan_reason', 'property', 'dependents', 'guarantor', 'own_car','HasMortgage','HasDependents','LoanPurpose','HasCoSigner','Default']
+    
+    
     selected_features = ['Age', 'Income', 'LoanAmount', 'CreditScore', 'HasMortgage', 'HasDependents']
     X_train = X_train[selected_features]
     X_test = X_test[selected_features]

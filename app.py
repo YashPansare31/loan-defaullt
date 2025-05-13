@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template_string
 import pickle
 import numpy as np
-
+import joblib
+import os
 app = Flask(__name__)
 
 # Load the trained model
-model = pickle.load(open('models/model.pkl', 'rb'))
+model = joblib.load("models/model.pkl")
+
 
 # HTML Template
 template = '''
@@ -67,4 +69,3 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
- 
