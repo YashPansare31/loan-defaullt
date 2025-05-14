@@ -68,4 +68,4 @@ def predict():
     return render_template_string(template, prediction=prediction)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8080)
